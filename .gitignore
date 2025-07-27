@@ -9,3 +9,4 @@ build/
 *.sqlite
 migrations/versions/*
 
+.DS_Store
