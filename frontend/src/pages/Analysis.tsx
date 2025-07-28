@@ -33,27 +33,27 @@ const Analysis: React.FC = () => {
   const COLORS = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'];
   
   return (
-    <div className="space-y-6">
-      <div className="bg-white rounded-lg shadow p-6">
-        <h2 className="text-2xl font-bold mb-4">상세 행동 분석</h2>
+    <div className="space-y-4 md:space-y-6">
+      <div className="bg-white rounded-lg shadow p-4 md:p-6">
+        <h2 className="text-xl md:text-2xl font-bold mb-4">상세 행동 분석</h2>
         
         {/* 투자자 유형 */}
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-2">투자자 유형</h3>
+        <div className="mb-4 md:mb-6">
+          <h3 className="text-base md:text-lg font-semibold mb-2">투자자 유형</h3>
           <div className="flex flex-wrap gap-2">
             {analysis?.investor_types?.map((type: string) => (
-              <span key={type} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+              <span key={type} className="px-2 py-1 md:px-3 md:py-1 bg-blue-100 text-blue-800 rounded-full text-xs md:text-sm">
                 {type}
               </span>
             ))}
           </div>
         </div>
         
-        {/* 상세 지표 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* 상세 지표 - 모바일에서 단일 컬럼 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
           <div>
-            <h3 className="text-lg font-semibold mb-3">행동 지표</h3>
-            <div className="space-y-3">
+            <h3 className="text-base md:text-lg font-semibold mb-3">행동 지표</h3>
+            <div className="space-y-2 md:space-y-3">
               <MetricRow
                 label="평균 보유기간"
                 value={`${analysis?.behavior_analysis?.avg_holding_period?.toFixed(1)}일`}
@@ -83,8 +83,8 @@ const Analysis: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-3">리스크 지표</h3>
-            <div className="space-y-3">
+            <h3 className="text-base md:text-lg font-semibold mb-3">리스크 지표</h3>
+            <div className="space-y-2 md:space-y-3">
               <MetricRow
                 label="포트폴리오 변동성"
                 value={`${analysis?.behavior_analysis?.portfolio_volatility?.toFixed(1)}%`}
@@ -118,8 +118,8 @@ const Analysis: React.FC = () => {
       </div>
       
       {/* 섹터 집중도 */}
-      <div className="bg-white rounded-lg shadow p-6">
-        <h3 className="text-xl font-bold mb-4">섹터별 투자 비중</h3>
+      <div className="bg-white rounded-lg shadow p-4 md:p-6">
+        <h3 className="text-lg md:text-xl font-bold mb-4">섹터별 투자 비중</h3>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -143,10 +143,10 @@ const Analysis: React.FC = () => {
         </div>
       </div>
       
-      {/* 시장 평균 비교 */}
-      <div className="bg-white rounded-lg shadow p-6">
-        <h3 className="text-xl font-bold mb-4">시장 평균과 비교</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* 시장 평균 비교 - 모바일에서 세로 배치 */}
+      <div className="bg-white rounded-lg shadow p-4 md:p-6">
+        <h3 className="text-lg md:text-xl font-bold mb-4">시장 평균과 비교</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
           <ComparisonCard
             label="평균 보유기간"
             myValue={analysis?.behavior_analysis?.avg_holding_period}
@@ -186,13 +186,13 @@ const MetricRow: React.FC<MetricRowProps> = ({ label, value, target, current, in
   
   return (
     <div className="flex items-center justify-between py-2 border-b">
-      <span className="text-gray-600">{label}</span>
-      <div className="flex items-center gap-3">
-        <span className="font-semibold">{value}</span>
+      <span className="text-xs md:text-sm text-gray-600">{label}</span>
+      <div className="flex items-center gap-2 md:gap-3">
+        <span className="font-semibold text-sm md:text-base">{value}</span>
         {isGood ? (
-          <ArrowUp className="w-4 h-4 text-green-600" />
+          <ArrowUp className="w-3 h-3 md:w-4 md:h-4 text-green-600" />
         ) : (
-          <ArrowDown className="w-4 h-4 text-red-600" />
+          <ArrowDown className="w-3 h-3 md:w-4 md:h-4 text-red-600" />
         )}
       </div>
     </div>
@@ -212,13 +212,13 @@ const ComparisonCard: React.FC<ComparisonCardProps> = ({ label, myValue, marketV
   const isGood = inverse ? myValue < marketValue : myValue > marketValue;
   
   return (
-    <div className="bg-gray-50 rounded-lg p-4">
-      <p className="text-sm text-gray-600 mb-2">{label}</p>
-      <div className="flex items-baseline gap-2">
-        <span className="text-2xl font-bold">{myValue?.toFixed(1)}{unit}</span>
-        <span className="text-sm text-gray-500">vs {marketValue}{unit}</span>
+    <div className="bg-gray-50 rounded-lg p-3 md:p-4">
+      <p className="text-xs md:text-sm text-gray-600 mb-2">{label}</p>
+      <div className="flex items-baseline gap-1 md:gap-2">
+        <span className="text-xl md:text-2xl font-bold">{myValue?.toFixed(1)}{unit}</span>
+        <span className="text-xs md:text-sm text-gray-500">vs {marketValue}{unit}</span>
       </div>
-      <div className={`mt-2 text-sm font-medium ${isGood ? 'text-green-600' : 'text-red-600'}`}>
+      <div className={`mt-2 text-xs md:text-sm font-medium ${isGood ? 'text-green-600' : 'text-red-600'}`}>
         {Number(diff) > 0 ? '+' : ''}{diff}%
       </div>
     </div>
