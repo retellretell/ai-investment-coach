@@ -2,9 +2,24 @@ from sqlalchemy import Column, String, Float, Integer, DateTime, JSON, ForeignKe
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from datetime import datetime
+from pydantic import BaseModel
 
 Base = declarative_base()
 
+# Pydantic 모델: 런타임에서 사용되는 투자 행동 데이터
+class InvestmentBehavior(BaseModel):
+    avg_holding_period: float
+    turnover_rate: float
+    win_rate: float
+    loss_delay_rate: float = 0.0
+    fomo_purchase_count: int = 0
+    portfolio_volatility: float = 0.0
+    max_drawdown: float = 0.0
+    cash_ratio: float = 0.0
+    sector_concentration: dict = {}
+    investor_types: list = []
+
+# SQLAlchemy 모델
 class User(Base):
     __tablename__ = "users"
     
