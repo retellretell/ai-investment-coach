@@ -2,7 +2,7 @@ from typing import List, Dict, Optional
 from datetime import datetime
 import uuid
 
-from ..models.behavior import InvestmentBehavior
+from ..core.behavior_analyzer import InvestmentBehavior
 from ..schemas.response import CoachingAction
 from ..config import Constants
 
