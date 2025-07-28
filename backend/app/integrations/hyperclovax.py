@@ -2,7 +2,7 @@ import aiohttp
 import json
 from typing import Dict, List
 from ..config import Config
-from ..models.behavior import InvestmentBehavior, InvestorType
+from ..core.behavior_analyzer import InvestmentBehavior, InvestorType
 
 class HyperClovaXClient:
     """HyperCLOVA X API 클라이언트 (데모용)"""
