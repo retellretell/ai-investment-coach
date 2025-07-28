@@ -2,7 +2,7 @@ from typing import Dict, List
 from datetime import datetime
 import uuid
 
-from ..models.behavior import InvestmentBehavior
+from ..core.behavior_analyzer import InvestmentBehavior
 
 class GamificationEngine:
     """게이미피케이션 엔진"""
