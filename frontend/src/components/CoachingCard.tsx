@@ -48,8 +48,8 @@ const CoachingCard: React.FC<CoachingCardProps> = ({ action }) => {
           {action.expected_impact && (
             <div className="mt-2 flex items-center gap-2">
               <span className="text-xs bg-white px-2 py-1 rounded">
-                예상 개선: {Object.values(action.expected_impact)[0]}%
-              </span>
+              {`예상 개선: ${Object.values(action.expected_impact)[0]}%`}
+                 </span>
             </div>
           )}
         </div>
