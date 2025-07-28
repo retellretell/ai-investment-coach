@@ -15,13 +15,13 @@ const CoachingCard: React.FC<CoachingCardProps> = ({ action }) => {
   const getIcon = () => {
     switch (action.type) {
       case 'warning':
-        return <AlertCircle className="w-5 h-5" />;
+        return <AlertCircle className="w-4 h-4 md:w-5 md:h-5" />;
       case 'goal_setting':
-        return <Target className="w-5 h-5" />;
+        return <Target className="w-4 h-4 md:w-5 md:h-5" />;
       case 'rebalancing':
-        return <TrendingUp className="w-5 h-5" />;
+        return <TrendingUp className="w-4 h-4 md:w-5 md:h-5" />;
       default:
-        return <Shield className="w-5 h-5" />;
+        return <Shield className="w-4 h-4 md:w-5 md:h-5" />;
     }
   };
   
@@ -39,17 +39,17 @@ const CoachingCard: React.FC<CoachingCardProps> = ({ action }) => {
   };
   
   return (
-    <div className={`rounded-lg border p-4 ${getPriorityColor()}`}>
-      <div className="flex items-start gap-3">
-        <div className="mt-1">{getIcon()}</div>
+    <div className={`rounded-lg border p-3 md:p-4 ${getPriorityColor()}`}>
+      <div className="flex items-start gap-2 md:gap-3">
+        <div className="mt-0.5 md:mt-1">{getIcon()}</div>
         <div className="flex-1">
-          <h4 className="font-semibold text-gray-900">{action.title}</h4>
-          <p className="text-sm text-gray-600 mt-1">{action.description}</p>
+          <h4 className="font-semibold text-gray-900 text-sm md:text-base">{action.title}</h4>
+          <p className="text-xs md:text-sm text-gray-600 mt-1">{action.description}</p>
           {action.expected_impact && (
             <div className="mt-2 flex items-center gap-2">
               <span className="text-xs bg-white px-2 py-1 rounded">
-              {`예상 개선: ${Object.values(action.expected_impact)[0]}%`}
-                 </span>
+                예상 개선: {Object.values(action.expected_impact)[0]}%
+              </span>
             </div>
           )}
         </div>
