@@ -142,4 +142,18 @@ const Portfolio: React.FC = () => {
               <div>
                 <p className="text-xs md:text-sm text-gray-600">예상 거래 비용</p>
                 <p className="font-medium text-sm md:text-base">
-                  ₩{((rebalancingPlan.estimated_cost?.commission || 0) + (rebalancing
+                  ₩{((rebalancingPlan.estimated_cost?.commission || 0) + (rebalancingPlan.estimated_cost?.tax || 0)).toLocaleString()}
+                </p>
+              </div>
+              <button className="w-full sm:w-auto px-4 py-2 md:px-6 md:py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm md:text-base">
+                M-STOCK에서 실행
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Portfolio;
