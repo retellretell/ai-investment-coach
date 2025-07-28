@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from typing import List, Dict
 import random
 
-from ..models.behavior import InvestmentBehavior
+from ..core.behavior_analyzer import InvestmentBehavior
 
 def generate_demo_transactions(user_id: str) -> pd.DataFrame:
     """데모용 거래 데이터 생성"""
