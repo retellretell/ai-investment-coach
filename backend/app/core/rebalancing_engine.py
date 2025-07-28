@@ -4,7 +4,7 @@ import numpy as np
 import uuid
 from datetime import datetime
 
-from ..models.behavior import InvestmentBehavior
+from ..core.behavior_analyzer import InvestmentBehavior
 from ..config import Constants
 
 class RebalancingEngine:
