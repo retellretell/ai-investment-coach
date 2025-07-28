@@ -9,6 +9,7 @@ from .rebalancing_engine import RebalancingEngine
 from .gamification_engine import GamificationEngine
 from ..integrations.hyperclovax import HyperClovaXClient
 from ..integrations.krx_data import KRXDataClient
+from ..models.behavior import InvestmentBehavior  # 추가
 
 class CoachingOrchestrator:
     """AI 코칭 통합 관리"""
