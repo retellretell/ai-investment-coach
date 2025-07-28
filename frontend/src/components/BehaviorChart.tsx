@@ -15,15 +15,15 @@ const BehaviorChart: React.FC<BehaviorChartProps> = ({ data }) => {
   ];
   
   return (
-    <div className="bg-white rounded-lg shadow p-6">
-      <h3 className="text-xl font-bold mb-4">투자 행동 추이</h3>
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={chartData}>
+    <div className="bg-white rounded-lg shadow p-3 md:p-6">
+      <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">투자 행동 추이</h3>
+      <ResponsiveContainer width="100%" height={250} className="md:h-[300px]">
+        <LineChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
+          <XAxis dataKey="month" fontSize={12} />
+          <YAxis fontSize={12} />
           <Tooltip />
-          <Legend />
+          <Legend wrapperStyle={{ fontSize: 12 }} />
           <Line type="monotone" dataKey="보유기간" stroke="#3B82F6" strokeWidth={2} />
           <Line type="monotone" dataKey="회전율" stroke="#EF4444" strokeWidth={2} />
           <Line type="monotone" dataKey="승률" stroke="#10B981" strokeWidth={2} />
