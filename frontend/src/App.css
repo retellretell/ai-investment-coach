@@ -2,9 +2,53 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* 추가 커스텀 스타일 */
+/* 모바일 우선 기본 스타일 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* 컨테이너 반응형 설정 */
 .container {
-  max-width: 1200px;
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
 }
 
 /* 로딩 애니메이션 */
@@ -19,4 +63,37 @@
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+/* 모바일 스크롤 개선 */
+.scrollable {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* 버튼 터치 피드백 */
+button:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+/* 모바일 테이블 스크롤 인디케이터 */
+.table-scroll-container {
+  position: relative;
+}
+
+.table-scroll-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+  pointer-events: none;
+}
+
+/* 안전 영역 패딩 (노치 대응) */
+.safe-padding-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
 }
