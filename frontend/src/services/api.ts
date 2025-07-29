@@ -1,13 +1,19 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/v1';
+// Vercel 배포 시 환경변수 사용, 없으면 로컬 주소
+const API_BASE_URL = process.env.REACT_APP_API_URL || 
+  (process.env.NODE_ENV === 'production' 
+    ? 'https://ai-investment-coach-backend.vercel.app/api/v1'  // 백엔드 배포 URL로 변경 필요
+    : 'http://localhost:8000/api/v1');
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  timeout: 10000, // 10초 타임아웃
 });
+
 
 // 데모 데이터
 const demoData = {
